@@ -1,8 +1,15 @@
 <template>
-  <div>
-    <button @click="setGroup()"></button>
+  <div class="list-word">
+    <div class="">
+    <button @click="setGroup()">NEW</button>
+    <button @click="setGroup()">DOING</button>
+    <button @click="setGroup()">COMMON</button>
+    <button @click="setGroup()">DONE</button>
+    </div>
     <div>
-      <div v-for="word in words" :key="word">{{word}}</div>
+      <div class="list-item" v-for="word in words" :key="word">
+        <span class="list-item__text">{{word}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -31,18 +38,29 @@ export default {
     setWords(group) {
       let allWords = [];
       storage.getAllKeys(data => {
-        console.log(data);
         allWords = data.data;
         const words = allWords
           .filter(x => parseInt(x.substring(6, 7)) === group)
           .map(x => x.substring(8));
         this.words = words;
-        console.log(this.words);
       });
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.list-word {
+  width: 100%;
+}
+  .list-item {
+    border-top: solid 1px black;
+    width: 100%;
+    height: 100px;
+    padding-left: 20px;
+    &__text {
+      margin-top: 22px;
+      font-size: 36px;
+    }
+  }
 </style>

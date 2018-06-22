@@ -92,10 +92,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/home/tuan/project/personal/weex/vocabulary/src/components/ListWord.vue"
+__vue_options__.__file = "/home/tuan/Projects/personal/weex-vocabulary/src/components/ListWord.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-0c146478"
+__vue_options__._scopeId = "data-v-c3d9f0e6"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -113,7 +113,21 @@ module.exports = __vue_exports__
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = {}
+module.exports = {
+  "list-word": {
+    "width": 100
+  },
+  "list-item": {
+    "borderTop": "solid 1px black",
+    "width": 100,
+    "height": "100",
+    "paddingLeft": "20"
+  },
+  "list-item__text": {
+    "marginTop": "22",
+    "fontSize": "36"
+  }
+}
 
 /***/ }),
 /* 2 */
@@ -125,6 +139,13 @@ module.exports = {}
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -161,7 +182,6 @@ exports.default = {
 
       var allWords = [];
       storage.getAllKeys(function (data) {
-        console.log(data);
         allWords = data.data;
         var words = allWords.filter(function (x) {
           return parseInt(x.substring(6, 7)) === group;
@@ -169,7 +189,6 @@ exports.default = {
           return x.substring(8);
         });
         _this.words = words;
-        console.log(_this.words);
       });
     }
   }
@@ -180,17 +199,40 @@ exports.default = {
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('button', {
+  return _c('div', {
+    staticClass: ["list-word"]
+  }, [_c('div', {}, [_c('button', {
     on: {
       "click": function($event) {
         _vm.setGroup()
       }
     }
-  }), _c('div', _vm._l((_vm.words), function(word) {
+  }, [_vm._v("NEW")]), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.setGroup()
+      }
+    }
+  }, [_vm._v("DOING")]), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.setGroup()
+      }
+    }
+  }, [_vm._v("COMMON")]), _c('button', {
+    on: {
+      "click": function($event) {
+        _vm.setGroup()
+      }
+    }
+  }, [_vm._v("DONE")])], 1), _c('div', _vm._l((_vm.words), function(word) {
     return _c('div', {
-      key: word
-    }, [_vm._v(_vm._s(word))])
-  }))], 1)
+      key: word,
+      staticClass: ["list-item"]
+    }, [_c('span', {
+      staticClass: ["list-item__text"]
+    }, [_vm._v(_vm._s(word))])])
+  }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
